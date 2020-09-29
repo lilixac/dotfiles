@@ -34,8 +34,6 @@
 #
 ###############################################################################
 
-font pango: JetBrains Mono 12
-
 ###############################################################################
 # Meta Key Mappings
 # Alt key is Mod1, and Windows key is Mod4
@@ -87,7 +85,7 @@ bindsym $mod+d exec $i3-wm.program.launcher.app
 
 ## Launch // Command // <><Shift> Space ##
 set_from_resource $i3-wm.program.launcher.cmd i3-wm.program.launcher.cmd rofi -show run -theme $rofiTheme
-bindsym $mod+Shift+d exec $i3-wm.program.launcher.cmd
+bindsym $mod+Shift+space exec $i3-wm.program.launcher.cmd
 
 ## Navigate // Window by Name // <><Ctrl> Space ##
 set_from_resource $i3-wm.program.launcher.window i3-wm.program.launcher.window rofi -show window -theme $rofiTheme
@@ -112,10 +110,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 ## Navigate // Relative Window // <> k j h l ##
-# bindsym $mod+h focus left
-# bindsym $mod+j focus down
-# bindsym $mod+k focus up
-# bindsym $mod+l focus right
+## bindsym $mod+h focus left
+## bindsym $mod+j focus down
+## bindsym $mod+k focus up
+## bindsym $mod+l focus right
 
 ## Navigate // Workspaces 1-10 // <> 0..9 ##
 bindsym $mod+1 workspace number $ws1
@@ -177,12 +175,12 @@ bindsym $mod+Ctrl+Shift+Up move workspace to output up
 bindsym $mod+Ctrl+Shift+Right move workspace to output right
 
 ## Modify // Next Window Orientation // <> Backspace ##
-# bindsym $mod+BackSpace split toggle
+## bindsym $mod+BackSpace split toggle
 
-# split in horizontal orientation
+## split in horizontal orientation
 bindsym $mod+h split h
 
-# # split in vertical orientation
+## split in vertical orientation
 bindsym $mod+v split v
 
 ## Modify // Window Fullscreen Toggle // <> f ##
@@ -299,7 +297,7 @@ set_from_resource $i3-wm.program.settings i3-wm.program.settings gnome-control-c
 bindsym $mod+c exec $i3-wm.program.settings
 
 ## Modify // Display Settings // <> d ##
-set_from_resource $i3-wm.program.display i3-wm.program.display gnome-control-center display
+## set_from_resource $i3-wm.program.display i3-wm.program.display gnome-control-center display
 ## bindsym $mod+d exec $i3-wm.program.display
 
 ## Modify // Wifi Settings // <> w ##
@@ -466,7 +464,7 @@ set_from_resource $i3-wm.bar.workspace.urgent.background.color i3-wm.bar.workspa
 set_from_resource $i3-wm.bar.workspace.urgent.text.color i3-wm.bar.workspace.urgent.text.color "#fdf6e3"
 
 # Sets i3 font for dialogs
-set_from_resource $i3-wm.font i3-wm.font pango:Source Code Pro Medium 13
+set_from_resource $i3-wm.font i3-wm.font pango:JetBrains Mono Regular 12
 font $i3-wm.font
 
 ###############################################################################
@@ -474,7 +472,7 @@ font $i3-wm.font
 ###############################################################################
 
 set_from_resource $i3-wm.bar.position i3-wm.bar.position bottom
-set_from_resource $i3-wm.bar.font i3-wm.bar.font pango:Source Code Pro Medium 13, Material Design Icons 13
+set_from_resource $i3-wm.bar.font i3-wm.bar.font pango:JetBrains Mono Regular 12, Material Design Icons 13
 set_from_resource $i3-wm.bar.separator i3-wm.bar.separator " "
 set_from_resource $i3-wm.bar.trayoutput i3-wm.bar.trayoutput none
 set_from_resource $i3-wm.bar.stripworkspacenumbers i3-wm.bar.stripworkspacenumbers yes
@@ -535,10 +533,9 @@ set_from_resource $i3-wm.program.3 i3-wm.program.3 :
 exec --no-startup-id $i3-wm.program.3
 
 # apps in a certain work space
-#
 
 # chromium
-assign [class=Chromium] $ws2
+assign [class=Firefox] $ws2
 
 # text editor
 assign [class=Sublime_text] $ws3
@@ -549,17 +546,14 @@ assign [class=Vlc|Nautilus] $ws4
 # ebook-reader
 assign [class=Foliate] $ws5
 
+# teams
+assign [class=Teams] $ws8
+
 # torrent
-assign [class=Firefox|Transmission-gtk] $ws9
+assign [class=Transmission-gtk] $ws9
 
 # chat apps 
-assign [class=ViberPC|TelegramDesktop] $ws10
-
-
-
-
-
-
+assign [class=ViberPC|Skype] $ws10
 
 
 
