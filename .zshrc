@@ -112,11 +112,26 @@ source $ZSH/oh-my-zsh.sh
 # POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=''
 # POWERLEVEL9K_BATTERY_ICON='\uf1e6 '
 
-
+# NODE
 export PATH=$HOME/.node_modules_global/bin:$PATH
 
-alias venv="source venv/bin/activate"
+# PYENV
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# ALIASES
+
+alias work="source work/bin/activate"
 alias ..="cd .."
 alias ....="cd ../.."
 alias py="python3"
 alias run="npm start"
+alias jn="jupyter-notebook"
+alias test="ping google.com"
+alias venv="python3 -m venv"
+alias ts="date +%s"
+alias yt="youtube-dl -x --audio-format mp3"
