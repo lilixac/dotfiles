@@ -4,9 +4,9 @@
 
 <hr>
 
--  **Get curl, zsh, vim, git, cmus, cmatrix, neofetch, vlc, pip**
+-  **Get curl, zsh, vim, git, cmus, cmatrix, neofetch, vlc, pip, tree**
     ```shell
-    sudo apt install curl zsh vim git cmus cmatrix neofetch vlc python3-pip
+    sudo apt install curl zsh vim git cmus cmatrix neofetch vlc python3-pip tree
     ```
 
     Get configured zsh shell.
@@ -81,6 +81,99 @@
 
 <hr>
 
-## TO ADD LATER
+# FOR ARCH
 
-- How to get wifi working on arch for my stupid broadcom wifi driver.
+Default terminal set to terminator in i3 config.
+```
+sudo pacman -S terminator
+```
+
+## To get wifi up in arch
+
+- Install basedevel, networkmanager
+```
+sudo pacman -S base-devel networkmanager
+```
+
+- Install yay
+```
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+```
+
+- Install broadcom drivers
+```
+yay broadcom-wl-dkms
+cd broadcom-wl-dkms
+makepkg -si
+```
+
+Then, yay and broadcom drivers will be installed in the system.
+
+<hr>
+
+- While installing networkmanager, nmcli will be installed as well.
+```
+nmcli device wifi list
+nmcli device wifi connect 'SSID' password 'password'
+```
+
+The wifi should now be connected.
+
+```
+sudo ls /etc/NetworkManager/system-connections/
+```
+On running this command, you should get this output:
+
+`'SSID.nmconnection'`
+
+After this, wifi will be connected to the system and will remain connected on reboot.
+
+## AUDIO
+
+I use alsamixer is used for audio.
+
+```
+sudo pacman -S alsa-utils alsa-lib
+```
+Then, open alsamixer
+```
+alsamixer
+```
+Adjust the volume there. Then sound should work.
+
+
+## POLYBAR
+I got this polybar theme from [here](https://github.com/adi1090x/polybar-themes) and customized it a bit for my system.
+
+To use this properly, we need fonts installed. This can be done by running this command:
+
+```
+# navigate to the folder
+cd .config/polybar
+
+# install fonts
+cp -r fonts/* ~/.local/share/fonts
+
+# reload font cache
+fc-cache -v
+
+# remove if it exists
+sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf
+
+# launch the polybar
+~/.config/polybar/launch.sh
+```
+
+The script to launch it is in the i3 config file as well.
+
+## VIM and ZSH
+
+To install them,
+
+```
+sudo pacman -S vim zsh
+```
+
+For configurations, same as mentioned above, for debian/ubuntu system.
