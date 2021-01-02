@@ -135,3 +135,5 @@ alias test="ping google.com"
 alias venv="python3 -m venv"
 alias ts="date +%s"
 alias yt="youtube-dl -x --audio-format mp3"
+
+~/.config/panes
