@@ -1,5 +1,4 @@
-" Set line number
-set number 
+set number                      " Set line number
 set showmode                    " always show what mode we're currently editing in
 set nowrap                      " don't wrap lines
 set tabstop=4                   " a tab is four spaces
@@ -21,6 +20,8 @@ set mouse=a			        	" enable mouse support
 set laststatus=2                " lightdm
 
 let mapleader="/"
+let g:dracula_colorterm = 0
+set termguicolors
 
 syntax on
 " Specify a directory for plugins
@@ -47,9 +48,7 @@ Plug 'millermedeiros/vim-esformatter'
 Plug 'prettier/vim-prettier'
 
 " colorschemes
-Plug 'tomasr/molokai'
-Plug 'rakr/vim-one'
-Plug 'vim-scripts/summerfruit256.vim'
+Plug 'dracula/vim'
 " Initialize plugin system
 call plug#end()
 
@@ -58,7 +57,7 @@ call plug#end()
 map <C-n> :NERDTreeToggle<CR>
 
 nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <leader>m :NERDTreeClose<CR>:NERDTreeFind<CR>
+" nnoremap <leader>m :NERDTreeClose<CR>:NERDTreeFind<CR>
 nnoremap <leader>N :NERDTreeClose<CR>
 
 " Use a single click to fold/unfold directories and a double click to open
@@ -76,25 +75,34 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
 
 set t_Co=256                " 256 colors terminal
 
-let g:molokai_original=0
-colorscheme molokai
+" let g:molokai_original=0
+colorscheme dracula
+
+hi CursorLine ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#2e3039 gui=NONE
+hi Normal guifg=#f8f8f2 guibg=#1e1f29 gui=NONE
+hi NonText guifg=#f8f8f2 guibg=#1e1f29 gui=NONE
+
+hi TabLineFill  guifg=#333333 guibg=#1e1f29 gui=none
+hi TabLine      guifg=#666666 guibg=#1e1f29 gui=none
+hi TabLineSel   guifg=WHITE guibg=#1e1f29 gui=none
+" colorscheme_bg = "dark"
 " make 'var' keyword easier to spot
-hi link javascriptType Keyword
+" hi link javascriptType Keyword
 " default ColorColumn is too distractive
-hi clear ColorColumn
-hi link ColorColumn FoldColumn
+" hi clear ColorColumn
+" hi link ColorColumn FoldColumn
 " defaul line number is too distractive
-hi clear LineNr
-hi link LineNr Comment
-hi link OverLength Error
+" hi clear LineNr
+" hi link LineNr Comment
+" hi link OverLength Error
 
 " --- UI settings ---
 
 
 if has('gui_running')
     "set guifont=Menlo:h13
-    set gfn:Monaco:h14
-    set transp=0
+    " set gfn:Monaco:h14
+    " set transp=0
 
     " toolbar and scrollbars
     set guioptions-=T       " remove toolbar
@@ -106,10 +114,6 @@ if has('gui_running')
                             "   truncate msgs (avoid press ENTER msgs).
 endif
 
-" solarized theme
-"syntax enable
-"set background=dark
-"colorscheme solarized
 
 " for commenting
 " --- NERDCommenter ---
@@ -124,3 +128,4 @@ let g:NERDCustomDelimiters = {
 
 " select all
 map <C-a> <esc>ggVG<CR>
+
